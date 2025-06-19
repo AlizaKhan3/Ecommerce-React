@@ -1,71 +1,12 @@
-// import logo from "../assets/logo2.webp"
-// import "../App.css";
-// import "../index.css";
-// import AnchorTemporaryDrawer from "./drawer";
-
-// const AppNavbar = () => {
-//   return (
-//     <div className='mx-0 bg-amber-400 h-20'>
-//         <h1 className='font-semibold'>dsdhj</h1>
-//     </div>
-//   )
-// }
-
-
-// function AppNavbar() {
-//   return (
-//     <div
-//       className="sticky top-0 z-[20] w-full flex flex-wrap items-center justify-between py-6 px-6 md:px-20 shadow-md"
-//       style={{ backgroundColor: 'var(--color-uranianBlue)', borderBottom: '2px solid var(--color-appgray)' }}
-//     >
-//       {/* Logo */}
-//       <div className="logo flex items-center gap-1">
-//         <img src={logo} alt="React Store" className="w-20 h-auto" />
-//         <p
-//           className="text-2xl font-bold"
-//           style={{ color: 'var(--color-appdark)' }}
-//         >
-//           BIG <span className="font-semibold text-violet">BAG</span>
-//         </p>
-//       </div>
-
-//       {/* Navigation Menu */}
-//       <ul className="flex gap-6 text-lg font-semibold">
-//         <li style={{ color: 'var(--color-appdark)' }} className="hover:text-[var(--color-violet)] cursor-pointer">HOME</li>
-//         <li style={{ color: 'var(--color-appdark)' }} className="hover:text-[var(--color-violet)] cursor-pointer">ABOUT</li>
-//         <li style={{ color: 'var(--color-appdark)' }} className="hover:text-[var(--color-violet)] cursor-pointer">PRODUCTS</li>
-//         <li style={{ color: 'var(--color-appdark)' }} className="hover:text-[var(--color-violet)] cursor-pointer">CONTACT US</li>
-//       </ul>
-
-//       {/* Auth Buttons */}
-//       {/* <div className="flex gap-4 nav-btn">
-//         <button
-//           className="app-button px-4 py-2 rounded-md text-white font-semibold shadow"
-//           style={{ backgroundColor: 'var(--color-violet)' }}
-//         >
-//           Login
-//         </button>
-//         <button
-//           className="app-button px-4 py-2 rounded-md text-white font-semibold shadow"
-//           style={{ backgroundColor: 'var(--color-appblue)' }}
-//         >
-//           Sign up
-//         </button>
-//       </div>*/}
-//       {/* <AnchorTemporaryDrawer/> */}
-//     </div> 
-//   );
-// }
-
-// export default AppNavbar;
-
-
-
 import logo from "../../assets/Logo.png"
 import { IoMdSearch } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaCaretDown } from "react-icons/fa";
 import DarkMode from "./DarkMode";
+import { categoryList } from "../../utils/data";
+import { Data } from "../../utils/data";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Menu = [
   {
@@ -75,45 +16,59 @@ const Menu = [
   },
   {
     id: 2,
-    name: "Top Rated",
-    link: "/#services",
-  },
-  {
-    id: 3,
-    name: "Kids Wear",
-    link: "/#",
-  },
-  {
-    id: 3,
-    name: "Mens Wear",
-    link: "/#",
-  },
-  {
-    id: 3,
-    name: "Electronics",
-    link: "/#",
-  },
-];
-
-const DropdownLinks = [
-  {
-    id: 1,
     name: "Trending Products",
     link: "/products",
   },
   {
-    id: 2,
-    name: "Best Selling",
-    link: "/#",
-  },
-  {
     id: 3,
     name: "Top Rated",
-    link: "/#",
+    link: "/#services",
   },
 ];
 
-const AppNavbar = ({ handleOrderPopup }) => {
+// const DropdownLinks = [
+//   {
+//     id: 1,
+//     name: "Category",
+//     link: "/products",
+//   },
+//   {
+//     id: 2,
+//     name: "Electronics",
+//     link: "/#",
+//   },
+//   {
+//     id: 3,
+//     name: "Top Rated",
+//     link: "/#",
+//   },
+// ];
+
+const AppNavbar = ({ handleOrderPopup, handleSearch, handleCategory }) => {
+
+  const [productlist, setProductList] = useState(Data);
+   const navigate = useNavigate();
+
+  //  function handleCategory() {
+  //   navigate('/products')
+  //  }
+
+//   const handleCategory = (selectedCategory) => {
+//     console.log(selectedCategory); // this will now log the correct value
+
+//     let filteredCategory;
+
+//     if (selectedCategory === "") {
+//       navigate('/products')
+//       setProductList(productlist);
+//     }
+//     else {
+//       filteredCategory = Data.filter((product) => product.category === selectedCategory);
+//       navigate('/products')
+//       setProductList(filteredCategory);
+//     }
+// }
+
   return (
     <div className="shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
       {/* upper Navbar */}
@@ -130,6 +85,7 @@ const AppNavbar = ({ handleOrderPopup }) => {
           <div className="flex justify-between items-center gap-4">
             <div className="relative group hidden sm:block">
               <input
+                onChange={handleSearch}
                 type="text"
                 placeholder="search"
                 className="w-[200px] sm:w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-full border border-gray-300 px-2 py-1 focus:outline-none focus:border-1 focus:border-primary dark:border-gray-500 dark:bg-gray-800  "
@@ -168,27 +124,24 @@ const AppNavbar = ({ handleOrderPopup }) => {
               </a>
             </li>
           ))}
-          {/* Simple Dropdown and Links */}
           <li className="group relative cursor-pointer">
             <a href="#" className="flex items-center gap-[2px] py-2">
-              Trending Products
+              Category
               <span>
                 <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
               </span>
             </a>
             <div className="absolute z-[9999] hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
-              <ul>
-                {DropdownLinks.map((data) => (
-                  <li key={data.id}>
-                    <a
-                      href={data.link}
-                      className="inline-block w-full rounded-md p-2 hover:bg-primary/20 "
-                    >
-                      {data.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              {categoryList.map((category, index) => (
+                <div
+                  key={index}
+                  onClick={() => handleCategory(category)} 
+                  className="px-4 py-2 hover:bg-primary/20 rounded-md cursor-pointer capitalize"
+                >
+                  <Link to="/products">{category} </Link>
+                  
+                </div>
+              ))}
             </div>
           </li>
         </ul>
