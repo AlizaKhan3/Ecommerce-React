@@ -12,44 +12,24 @@ const AppCard = (props) => {
     const { id, price, title, description, category, image, rating } = props.data;
 
     return (
-        <div className="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 max-w-[280px] mx-auto">
-            {/* <div className="relative pb-[70%]">
+        <div className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-md transition-all duration-300 max-w-[280px] mx-auto my-4">
+            <div className="relative pb-[70%] group">
+                {/* Product Image */}
                 <img
-                    className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-2"
                     src={image}
                     alt={title}
                 />
-                <button onClick={addInFavs} className="absolute top-3 right-3 p-2 bg-white/80 rounded-full hover:bg-white shadow-lg">
-                    {favItem}
-                </button>
-
-                <div className="hidden hover:block absolute bg-black/40 shadow-2xl h-full w-full">
-                    <button className="font-semibold">View Product</button>
+                {/* Hover Overlay */}
+                <div className="hidden group-hover:flex absolute top-0 left-0 bg-black/40 w-full h-full items-center justify-center">
+                     <button onClick={addInFavs} className="absolute top-3 right-2  p-2 bg-white/80 rounded-full hover:bg-white shadow-lg">
+                        {favItem}
+                    </button>
+                    <button className="bg-white text-black px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition">
+                        View Product
+                    </button>
                 </div>
-            </div> */}
-            <div className="relative pb-[70%] group">
-  {/* Product Image */}
-  <img
-    className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-    src={image}
-    alt={title}
-  />
-
-  {/* Wishlist Button */}
-  <button
-    onClick={addInFavs}
-    className="absolute top-3 right-3 p-2 bg-white/80 rounded-full hover:bg-white shadow-lg"
-  >
-    {favItem}
-  </button>
-
-  {/* Hover Overlay */}
-  <div className="hidden group-hover:flex absolute top-0 left-0 bg-black/40 h-full w-full items-center justify-center">
-    <button className="bg-white text-black px-4 py-2 rounded-full font-semibold hover:bg-gray-200 transition">
-      View Product
-    </button>
-  </div>
-</div>
+            </div>
 
             <div className="p-4">
                 <span className="text-xs font-medium text-blue-600 uppercase">{category}</span>
