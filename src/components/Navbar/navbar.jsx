@@ -99,7 +99,7 @@ const DropdownLinks = [
   {
     id: 1,
     name: "Trending Products",
-    link: "/#",
+    link: "/products",
   },
   {
     id: 2,
