@@ -1,3 +1,4 @@
+import Aos from "aos";
 import { useState } from "react";
 import { FcLikePlaceholder } from "react-icons/fc";
 import { FcLike } from "react-icons/fc";
@@ -12,7 +13,7 @@ const AppCard = (props) => {
     const { id, price, title, description, category, image, rating } = props.data;
 
     return (
-        <div className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-md transition-all duration-300 max-w-[280px] mx-auto my-4">
+        <div data-aos="zoom-in-down" className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-md transition-all duration-300  my-4">
             <div className="relative pb-[70%] group">
                 {/* Product Image */}
                 <img
@@ -54,20 +55,30 @@ const AppCard = (props) => {
 }
 
 export default AppCard;
-// const Card = (props) => {
-//     const { id, price, title, description, category, image, rating } = props.data;
-//     return (
-//         <div className="shadow-lg rounded-xl p-4 max-w-sm mx-auto flex flex-col justify-between">
-//             <img className="w-full h-60 object-cover rounded-xl" src={image} alt="Black Hooded shirt" />
-//             <h2 className="text-xl font-semibold text-gray-900 mt-4"> {title}</h2>
-//             <p className="text-gray-500 text-sm">{category}</p>
-//             <p className="text-gray-700 mt-2 text-sm line-clamp-2">{description}</p>
-//             <div className="mt-4 flex justify-between items-center">
-//                 <span className="text-lg font-bold text-gray-900">$ {price}</span>
-//                 <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700  hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
-//                 >Add to cart</button>
-//             </div>
-//         </div>
-//     )
-// }
-// export default Card;
+
+
+        //   <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5">
+        //     {/* card section */}
+        //     {ProductsData.map((data) => (
+        //       <div
+        //         data-aos="fade-up"
+        //         data-aos-delay={data.aosDelay}
+        //         key={data.id}
+        //         className="space-y-3"
+        //       >
+        //         <img
+        //           src={data.img}
+        //           alt=""
+        //           className="h-[220px] w-[150px] object-cover rounded-md"
+        //         />
+        //         <div>
+        //           <h3 className="font-semibold">{data.title}</h3>
+        //           <p className="text-sm text-gray-600">{data.color}</p>
+        //           <div className="flex items-center gap-1">
+        //             <FaStar className="text-yellow-400" />
+        //             <span>{data.rating}</span>
+        //           </div>
+        //         </div>
+        //       </div>
+        //     ))}
+        //   </div>
