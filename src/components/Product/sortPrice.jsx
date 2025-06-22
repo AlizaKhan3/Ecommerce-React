@@ -11,12 +11,12 @@ const SortProducts = ({ handleSort }) => {
                 <button>Sort</button>
             </div>
             {
-                showOptions ?
+                showOptions ? //True
                     <div className="mt-2 flex flex-col bg-white/60 text-slate-500 font-semibold rounded shadow-lg absolute top-full z-10">
-                        <button onClick={() => handleSort("low to High")} value="low to high" className="px-4 py-2 hover:bg-purple-100"> Low to High </button>
+                        <button onClick={() => handleSort("Low to High")} value="low to high" className="px-4 py-2 hover:bg-purple-100"> Low to High </button>
                         <button onClick={() => handleSort("High to Low")} value="high to low" className="px-4 py-2 hover:bg-purple-100"> High to Low</button>
                     </div>
-                    :
+                    : //False
                     <></> // or null
             }
         </div>

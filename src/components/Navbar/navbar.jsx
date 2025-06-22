@@ -46,28 +46,29 @@ const Menu = [
 
 const AppNavbar = ({ handleOrderPopup, handleSearch, handleCategory }) => {
 
-  const [productlist, setProductList] = useState(Data);
-   const navigate = useNavigate();
+  // const [productlist, setProductList] = useState(Data);
+  // const navigate = useNavigate();
+
 
   //  function handleCategory() {
   //   navigate('/products')
   //  }
 
-//   const handleCategory = (selectedCategory) => {
-//     console.log(selectedCategory); // this will now log the correct value
+  //   const handleCategory = (selectedCategory) => {
+  //     console.log(selectedCategory); // this will now log the correct value
 
-//     let filteredCategory;
+  //     let filteredCategory;
 
-//     if (selectedCategory === "") {
-//       navigate('/products')
-//       setProductList(productlist);
-//     }
-//     else {
-//       filteredCategory = Data.filter((product) => product.category === selectedCategory);
-//       navigate('/products')
-//       setProductList(filteredCategory);
-//     }
-// }
+  //     if (selectedCategory === "") {
+  //       navigate('/products')
+  //       setProductList(productlist);
+  //     }
+  //     else {
+  //       filteredCategory = Data.filter((product) => product.category === selectedCategory);
+  //       navigate('/products')
+  //       setProductList(filteredCategory);
+  //     }
+  // }
 
   return (
     <div className="shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
@@ -135,11 +136,11 @@ const AppNavbar = ({ handleOrderPopup, handleSearch, handleCategory }) => {
               {categoryList.map((category, index) => (
                 <div
                   key={index}
-                  onClick={() => handleCategory(category)} 
+                  onClick={() => handleCategory(category)}
                   className="px-4 py-2 hover:bg-primary/20 rounded-md cursor-pointer capitalize"
                 >
                   <Link to="/products">{category} </Link>
-                  
+
                 </div>
               ))}
             </div>
