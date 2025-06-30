@@ -1,35 +1,32 @@
 import AppCard from "../src/components/Product/Card"
-import { useParams } from "react-router-dom"
-import { Data } from "../src/utils/data"
+import { Link, useParams } from "react-router-dom"
+import { categoryList, Data } from "../src/utils/data"
 import { useMemo, useState } from "react"
+import DetailCard from "../src/components/Product/DetailCard"
 
 const ProductDetail = () => {
   const params = useParams()
-  const [viewProduct, setViewProduct] = useState(null);
+  // const [viewProduct, setViewProduct] = useState(null);
 
-
-  const memoRes = useMemo((view) => {
+  //can go with useMemo coz we only want to display this when component renders (Mount -- with depenedency) OR we can do wtih useEffect+useState but obviously longer code it would be so for clean code and good practice here useMemo is used
+  const productResult = useMemo(() => {
     const prodDataTitle = params.title;
-
     const findProduct = Data.find((product) => product.title === prodDataTitle)
-
-    setViewProduct(findProduct)
     // console.log(findProduct.description)
-
     return findProduct;
-
-  }, [params])
-
-
- 
+  }, [])
 
   return (
-    <div className="container mx-auto border border-slate-700">
+    <div className="container mx-auto mt-7">
       {
-        { memoRes } ?
+        { productResult } ?
           <div>
-            <h1>{params.title}</h1>
-            <p className="text-yellow-600">{memoRes.description}</p>
+
+            {/* to={`products/${categoryList}` */}
+            <Link to="/products">
+              <span className="text-xs font-medium text-blue-600 uppercase">{`CATEGORY/ ${productResult.category}/ ${params.title}`}</span>
+            </Link>
+            <DetailCard title={productResult.title} description={productResult.description} price={productResult.price} image={productResult.image} category={productResult.category} />
           </div>
           : null
       }
