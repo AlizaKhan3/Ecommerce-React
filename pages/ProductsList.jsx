@@ -53,6 +53,7 @@ const ProductsList = () => {
     }
     setDataList(sortedList)
   }
+  
   return (
     <>
       <div className="mb-8">
