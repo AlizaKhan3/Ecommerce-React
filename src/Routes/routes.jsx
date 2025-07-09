@@ -4,8 +4,9 @@ import ProductsList from '../../pages/ProductsList'
 import ProductDetail from '../../pages/ProductDetail'
 import Cart from '../components/Product/cart'
 import AppNavbar from '../components/Navbar/navbar'
+import Footer from '../components/Footer/footer'
 const AppRoutes = () => {
-  
+
   return (
     <>
     <BrowserRouter>
@@ -16,6 +17,7 @@ const AppRoutes = () => {
         <Route element={<ProductDetail/>} path='/product/:title'/>
         <Route element={<Cart/>} path='/cart'/>
     </Routes>
+    <Footer/>
     </BrowserRouter>
     </>
   )

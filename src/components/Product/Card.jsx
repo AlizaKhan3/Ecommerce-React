@@ -13,9 +13,27 @@ const AppCard = (props) => {
 
     const { id, price, title, description, category, image, rating } = props.data;
 
-    const addToLocalStorage= ( ) => {
-        const cartProps = {id, price, title, quantity , image}
-    }
+    const addToCartHandler = () => {
+        const CART_KEY = "user-cart";
+        const product = { ...props.data, quantity: 1 };
+
+        // Get existing cart from localStorage
+        const existingCart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+
+        const index = existingCart.findIndex((item) => item.id === product.id);
+
+        if (index !== -1) {
+            // Already in cart, increase quantity
+            existingCart[index].quantity += 1;
+        } else {
+            // Not in cart, add new item
+            existingCart.push(product);
+        }
+
+        localStorage.setItem(CART_KEY, JSON.stringify(existingCart));
+        // alert("Item added to cart!");
+    };
+
     // console.log(params.title)
     return (
         <div data-aos="zoom-in-down" className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-md transition-all duration-300  my-4">
@@ -46,12 +64,12 @@ const AppCard = (props) => {
                     ⭐⭐⭐⭐☆ <span className="text-xs text-gray-500 ml-1">(24)</span>
                 </div>
 
-                <p className="mt-2 text-sm text-gray-500 line-clamp-2">{description}</p> 
+                <p className="mt-2 text-sm text-gray-500 line-clamp-2">{description}</p>
                 {/* lineclamp-2 shows only 2 line text baqi view product pr jaakr ayega */}
 
                 <div className="mt-4 flex justify-between items-center">
                     <span className="text-lg font-bold text-gray-900">${price}</span>
-                    <button onClick={()=> addToLocalStorage} className="px-4 py-2 bg-black text-white text-sm rounded-lg hover:bg-gray-800 active:scale-95">
+                    <button onClick={addToCartHandler} className="px-4 py-2 bg-black text-white text-sm rounded-lg hover:bg-gray-800 active:scale-95">
                         Add to Cart
                     </button>
                 </div>

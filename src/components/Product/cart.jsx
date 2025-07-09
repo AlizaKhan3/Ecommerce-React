@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { FaMinus, FaPlus } from "react-icons/fa6";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([]);
@@ -21,18 +23,50 @@ const Cart = () => {
         0
     );
 
-    const handleQuantity = (btntype, quantity) => {
-        console.log(btntype, quantity)
+    const handleQuantity = (btntype, id) => {
+        console.log(btntype, id);
+        const updatedCart = cartItems.map((item) => {
+            if (item.id === id) {
+                let newQty = item.quantity;
+                if (btntype === '+' && item.quantity < 10) {
+                    newQty += 1;
+                } else if (btntype === '-' && item.quantity > 1) {
+                    newQty -= 1;
+                }
+                return { ...item, quantity: newQty };
+            }
 
-        if (quantity < 2 && btntype === "-") {
-            return;
-        }
-        if (btntype === '+') {
-            quantity += 1
-        } else {
-            quantity -= 1;
-        }
+            // if(item.quantity === 0) {
+            //     handleRemove(item.id);
+            // }
+            return item;
+        })
+        setCartItems(updatedCart)
+        localStorage.setItem("user-cart", JSON.stringify(updatedCart));
+
     }
+
+
+    // const proceedToStripeCheckout = () => {
+    //     // console.log("stripe")
+    //     axios.post("/create-checkout-session", cartItems)
+    //         .then((res) => {
+    //             window.location.href = res.data.url
+    //         })
+    //         .catch((err) => {
+    //             console.error(err);
+    //         });
+    // }
+
+    const proceedToStripeCheckout = async () => {
+  try {
+    const res = await axios.post("http://localhost:5000/create-checkout-session", cartItems);
+    window.location.href = res.data.url;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
     return (
         <div className="min-h-screen bg-gray-50 p-6">
             <h1 className="text-3xl font-bold text-[#ed8900] mb-6 text-center">🛒 Your Cart</h1>
@@ -53,7 +87,7 @@ const Cart = () => {
                                 <img
                                     src={item.image}
                                     alt={item.title}
-                                    className="w-20 h-20 object-cover rounded-xl border"
+                                    className="w-20 h-20 object-contain rounded-xl border"
                                 />
                                 <div>
                                     <h2 className="text-lg font-semibold text-gray-800">{item.title}</h2>
@@ -61,9 +95,9 @@ const Cart = () => {
                                         {
 
                                         }
-                                        <p onClick={handleQuantity('-', item.quantity)}> <FaMinus /></p>
+                                        <p onClick={() => handleQuantity('-', item.id)}> <FaMinus /></p>
                                         <p className="text-gray-600">{item.quantity}</p>
-                                        <p onClick={handleQuantity('+', item.quantity)}>  <FaPlus /> </p>
+                                        <p onClick={() => handleQuantity('+', item.id)}>  <FaPlus /> </p>
                                     </div>
 
                                     <p className="text-gray-600">${item.price} × {item.quantity}</p>
@@ -86,7 +120,7 @@ const Cart = () => {
                         </p>
                         <button
                             className="mt-4 bg-[#ed8900] hover:bg-[#fea928] text-white font-bold py-2 px-6 rounded-xl shadow transition"
-                            onClick={() => alert("Stripe Checkout will be here!")}
+                            onClick={proceedToStripeCheckout}
                         >
                             Proceed to Checkout
                         </button>
