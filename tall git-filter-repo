@@ -1,0 +1,32 @@
+[33mcommit 2dae732abeef9ee9cf23da51a014f274671ea9ea[m
+Author: Aliza Khan <alizaadi2@gmail.com>
+Date:   Wed Jul 9 20:30:28 2025 +0500
+
+    updated
+
+[1mdiff --git a/.env b/.env[m
+[1mindex 21a0f60..6016fc8 100644[m
+[1m--- a/.env[m
+[1m+++ b/.env[m
+[36m@@ -1,2 +1,2 @@[m
+ # REACT_APP_CART_KEY="user-cart"[m
+[31m-REACT_APP_STRIPE_KEY = sk_test_51RiinDGK4Yeb1Myb4N7uSTkuLSgZ93poQnHLlWwKf0mJSmmt14Wn4OnR0XJKKGlZZLgzGhGFTucYQzPHUXgRUNnT00r05a2XUd[m
+\ No newline at end of file[m
+[32m+[m[32mREACT_APP_STRIPE_KEY =[m
+\ No newline at end of file[m
+
+[33mcommit c24bd62f15214f9b7e3162131cf6bab0f832e6f1[m
+Author: Aliza Khan <alizaadi2@gmail.com>
+Date:   Wed Jul 9 03:13:10 2025 +0500
+
+    integrating Stripe & cart
+
+[1mdiff --git a/.env b/.env[m
+[1mnew file mode 100644[m
+[1mindex 0000000..21a0f60[m
+[1m--- /dev/null[m
+[1m+++ b/.env[m
+[36m@@ -0,0 +1,2 @@[m
+[32m+[m[32m# REACT_APP_CART_KEY="user-cart"[m
+[32m+[m[32mREACT_APP_STRIPE_KEY = sk_test_51RiinDGK4Yeb1Myb4N7uSTkuLSgZ93poQnHLlWwKf0mJSmmt14Wn4OnR0XJKKGlZZLgzGhGFTucYQzPHUXgRUNnT00r05a2XUd[m
+\ No newline at end of file[m
