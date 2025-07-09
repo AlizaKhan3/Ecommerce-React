@@ -76,10 +76,10 @@ const AppNavbar = ({ handleOrderPopup, handleSearch, handleCategory }) => {
       <div className="bg-primary/40 py-2">
         <div className="container flex justify-between items-center">
           <div>
-            <a href="#" className="font-bold text-2xl sm:text-3xl flex gap-2">
+            <Link to="/" className="font-bold text-2xl sm:text-3xl flex gap-2">
               <img src={logo} alt="Logo" className="w-12" />
               OneStop
-            </a>
+            </Link>
           </div>
 
           {/* search bar */}
@@ -95,15 +95,16 @@ const AppNavbar = ({ handleOrderPopup, handleSearch, handleCategory }) => {
             </div>
 
             {/* order button */}
-            <button
-              onClick={() => handleOrderPopup()}
+            <Link
+            to="/cart"
+              // onClick={() => handleOrderPopup()}
               className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white  py-1 px-4 rounded-full flex items-center gap-3 group"
             >
-              <span className="group-hover:block hidden transition-all duration-200">
+              {/* <span className="group-hover:block hidden transition-all duration-200">
                 Order
-              </span>
+              </span> */}
               <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
-            </button>
+            </Link>
 
             {/* Darkmode Switch */}
             <div>
@@ -114,7 +115,7 @@ const AppNavbar = ({ handleOrderPopup, handleSearch, handleCategory }) => {
       </div>
       {/* lower Navbar */}
       <div data-aos="zoom-in" className="flex justify-center">
-        <ul className="sm:flex hidden items-center gap-4">
+        <ul className="flex items-center gap-4 text-sm md:text-base">
           {Menu.map((data) => (
             <li key={data.id}>
               <a
@@ -126,12 +127,12 @@ const AppNavbar = ({ handleOrderPopup, handleSearch, handleCategory }) => {
             </li>
           ))}
           <li className="group relative cursor-pointer">
-            <a href="#" className="flex items-center gap-[2px] py-2">
+            <Link to="/products" className="flex items-center gap-[2px] py-2">
               Category
               <span>
                 <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
               </span>
-            </a>
+            </Link>
             <div className="absolute z-[9999] hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
               {categoryList.map((category, index) => (
                 <div

@@ -1,11 +1,11 @@
-import AppNavbar from '../src/components/Navbar/navbar'
-import HeroSection from '../src/components/HeroSection/Hero'
+import HeroSection from '../src/components/Sections/Hero'
+import MidSection from '../src/components/Sections/midSection'
 
 const Home = () => {
   return (
     <div>
-      <AppNavbar />
       <HeroSection />
+      <MidSection/>
     </div>
   )
 }
