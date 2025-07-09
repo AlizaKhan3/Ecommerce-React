@@ -13,6 +13,9 @@ const AppCard = (props) => {
 
     const { id, price, title, description, category, image, rating } = props.data;
 
+    const addToLocalStorage= ( ) => {
+        const cartProps = {id, price, title, quantity , image}
+    }
     // console.log(params.title)
     return (
         <div data-aos="zoom-in-down" className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-md transition-all duration-300  my-4">
@@ -48,7 +51,7 @@ const AppCard = (props) => {
 
                 <div className="mt-4 flex justify-between items-center">
                     <span className="text-lg font-bold text-gray-900">${price}</span>
-                    <button className="px-4 py-2 bg-black text-white text-sm rounded-lg hover:bg-gray-800 active:scale-95">
+                    <button onClick={()=> addToLocalStorage} className="px-4 py-2 bg-black text-white text-sm rounded-lg hover:bg-gray-800 active:scale-95">
                         Add to Cart
                     </button>
                 </div>

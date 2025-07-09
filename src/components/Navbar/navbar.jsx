@@ -95,15 +95,16 @@ const AppNavbar = ({ handleOrderPopup, handleSearch, handleCategory }) => {
             </div>
 
             {/* order button */}
-            <button
-              onClick={() => handleOrderPopup()}
+            <Link
+            to="/cart"
+              // onClick={() => handleOrderPopup()}
               className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white  py-1 px-4 rounded-full flex items-center gap-3 group"
             >
-              <span className="group-hover:block hidden transition-all duration-200">
+              {/* <span className="group-hover:block hidden transition-all duration-200">
                 Order
-              </span>
+              </span> */}
               <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
-            </button>
+            </Link>
 
             {/* Darkmode Switch */}
             <div>
