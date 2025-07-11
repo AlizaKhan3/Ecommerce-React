@@ -5,7 +5,7 @@ const SortProducts = ({ handleSort }) => {
     const [showOptions, setShowOptions] = useState(false);
 
     return (
-        <div className="h-max flex w-auto place-items-end flex-col text-white relative my-6 mr-3">
+        <div className="h-max flex w-auto place-items-start flex-col text-white relative my-6 ml-2">
             <div className="bg-secondary/40 p-2 rounded-xl text-black font-bold flex gap-2 items-center cursor-pointer" onClick={() => setShowOptions(!showOptions)}>
                 <IoFilterCircleSharp />
                 <button>Sort</button>

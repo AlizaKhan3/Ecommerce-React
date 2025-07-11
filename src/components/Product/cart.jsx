@@ -59,13 +59,13 @@ const Cart = () => {
     // }
 
     const proceedToStripeCheckout = async () => {
-  try {
-    const res = await axios.post("http://localhost:5000/create-checkout-session", cartItems);
-    window.location.href = res.data.url;
-  } catch (err) {
-    console.error(err);
-  }
-};
+        try {
+            const res = await axios.post("http://localhost:5000/create-checkout-session", cartItems);
+            window.location.href = res.data.url;
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     return (
         <div className="min-h-screen bg-gray-50 p-6">
