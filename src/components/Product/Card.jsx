@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FcLikePlaceholder } from "react-icons/fc";
 import { FcLike } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { addToCartHandler } from "../../helpers/addToCartHandler";
 
 const AppCard = (props) => {
     const [favItem, setFavItem] = useState(<FcLikePlaceholder />);
@@ -13,26 +14,28 @@ const AppCard = (props) => {
 
     const { id, price, title, description, category, image, rating } = props.data;
 
-    const addToCartHandler = () => {
-        const CART_KEY = "user-cart";
-        const product = { ...props.data, quantity: 1 };
 
-        // Get existing cart from localStorage
-        const existingCart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    //moved this to helper to reuse on multiple pages.
+    // const addToCartHandler = () => {
+    //     const CART_KEY = "user-cart";
+    //     const product = { ...props.data, quantity: 1 };
 
-        const index = existingCart.findIndex((item) => item.id === product.id);
+    //     // Get existing cart from localStorage
+    //     const existingCart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
 
-        if (index !== -1) {
-            // Already in cart, increase quantity
-            existingCart[index].quantity += 1;
-        } else {
-            // Not in cart, add new item
-            existingCart.push(product);
-        }
+    //     const index = existingCart.findIndex((item) => item.id === product.id);
 
-        localStorage.setItem(CART_KEY, JSON.stringify(existingCart));
-        // alert("Item added to cart!");
-    };
+    //     if (index !== -1) {
+    //         // Already in cart, increase quantity
+    //         existingCart[index].quantity += 1;
+    //     } else {
+    //         // Not in cart, add new item
+    //         existingCart.push(product);
+    //     }
+
+    //     localStorage.setItem(CART_KEY, JSON.stringify(existingCart));
+    //     // alert("Item added to cart!");
+    // };
 
     // console.log(params.title)
     return (
@@ -69,7 +72,7 @@ const AppCard = (props) => {
 
                 <div className="mt-4 flex justify-between items-center">
                     <span className="text-lg font-bold text-gray-900">${price}</span>
-                    <button onClick={addToCartHandler} className="px-4 py-2 bg-black text-white text-sm rounded-lg hover:bg-gray-800 active:scale-95">
+                    <button onClick={() => addToCartHandler(props.data)} className="px-4 py-2 bg-black text-white text-sm rounded-lg hover:bg-gray-800 active:scale-95">
                         Add to Cart
                     </button>
                 </div>
