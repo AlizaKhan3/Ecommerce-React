@@ -4,9 +4,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaCaretDown } from "react-icons/fa";
 import DarkMode from "./DarkMode";
 import { categoryList } from "../../utils/data";
-import { Data } from "../../utils/data";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Menu = [
   {
@@ -96,7 +94,7 @@ const AppNavbar = ({ handleOrderPopup, handleSearch, handleCategory }) => {
 
             {/* order button */}
             <Link
-            to="/cart"
+              to="/cart"
               // onClick={() => handleOrderPopup()}
               className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white  py-1 px-4 rounded-full flex items-center gap-3 group"
             >
@@ -133,22 +131,21 @@ const AppNavbar = ({ handleOrderPopup, handleSearch, handleCategory }) => {
                 <FaCaretDown className="transition-all duration-200 group-hover:rotate-180" />
               </span>
             </Link>
-            <div className="absolute z-[9999] hidden group-hover:block w-[200px] rounded-md bg-white p-2 text-black shadow-md">
+            <div className="absolute left-0 md:left-auto md:right-0 top-full w-[200px] z-50 hidden group-hover:block rounded-md bg-white p-2 text-black shadow-md">
               {categoryList.map((category, index) => (
                 <div
                   key={index}
                   onClick={() => handleCategory(category)}
                   className="px-4 py-2 hover:bg-primary/20 rounded-md cursor-pointer capitalize"
                 >
-                  <Link to="/products">{category} </Link>
-
+                  <Link to="/products">{category}</Link>
                 </div>
               ))}
             </div>
           </li>
         </ul>
       </div>
-    </div>
+    </div >
   );
 };
 

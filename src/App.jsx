@@ -4,6 +4,7 @@ import './App.css'
 import AppRoutes from './Routes/routes';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   useEffect(() => {
@@ -15,10 +16,11 @@ function App() {
     });
     Aos.refresh();
   })
-  return(
+  return (
     <>
-      {/* <Home/> */}
-      <AppRoutes/>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
     </>
   )
 }

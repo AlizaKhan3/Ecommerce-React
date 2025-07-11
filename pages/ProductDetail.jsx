@@ -26,7 +26,8 @@ const ProductDetail = () => {
             <Link to="/products">
               <span className="text-xs font-medium text-blue-600 uppercase">{`CATEGORY/ ${productResult.category}/ ${params.title}`}</span>
             </Link>
-            <DetailCard title={productResult.title} description={productResult.description} price={productResult.price} image={productResult.image} category={productResult.category} />
+            <DetailCard product={productResult}/>
+            {/* <DetailCard title={productResult.title} description={productResult.description} price={productResult.price} image={productResult.image} category={productResult.category} /> */}
           </div>
           : null
       }

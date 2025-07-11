@@ -1,7 +1,7 @@
-// import AppCard from './Card'
-// import image from "../../assets/women.png"
+import { addToCartHandler } from "../../helpers/addToCartHandler"
 
-const DetailCard = ({ image, category, title, description, price }) => {
+const DetailCard = ({product}) => {
+    const { image, title, description, price, category, rating} = product
     return (
         <div className="container p-6 shadow-2xl border-gray-300 rounded-3xl grid grid-cols-1 md:grid-cols-2">
             <div className=" flex justify-center items-center">
@@ -21,7 +21,7 @@ const DetailCard = ({ image, category, title, description, price }) => {
                 </div>
                 <div className="mt-5 flex justify-between items-center">
                     <span className="text-lg font-bold text-gray-900">${price}</span>
-                    <button className="px-4 py-2 bg-black text-white text-sm rounded-lg hover:bg-gray-800 active:scale-95">
+                    <button onClick={() => addToCartHandler(product)} className="px-4 py-2 bg-black text-white text-sm rounded-lg hover:bg-gray-800 active:scale-95">
                         Add to Cart
                     </button>
                 </div>
