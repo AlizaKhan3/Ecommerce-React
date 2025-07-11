@@ -61,7 +61,6 @@ const Cart = () => {
     const proceedToStripeCheckout = async () => {
         try {
             const res = await axios.post(
-               
                 "https://ecommerce-react-backend-production.up.railway.app/create-checkout-session",
                 cartItems
             );
