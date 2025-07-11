@@ -118,12 +118,12 @@ const AppNavbar = ({ handleOrderPopup, handleSearch, handleCategory }) => {
         <ul className="flex items-center gap-4 text-sm md:text-base">
           {Menu.map((data) => (
             <li key={data.id}>
-              <a
-                href={data.link}
+              <Link
+                to={data.link}
                 className="inline-block px-4 hover:text-primary duration-200"
               >
                 {data.name}
-              </a>
+              </Link>
             </li>
           ))}
           <li className="group relative cursor-pointer">

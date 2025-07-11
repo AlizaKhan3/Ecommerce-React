@@ -36,7 +36,7 @@ const AppCard = (props) => {
 
     // console.log(params.title)
     return (
-        <div data-aos="zoom-in-down" className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-md transition-all duration-300  my-4">
+        <div data-aos="zoom-in-down" className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-md transition-all duration-300  my-4 sm:mx-2">
             <div className="relative pb-[70%] group">
                 {/* Product Image */}
                 <img
