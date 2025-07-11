@@ -60,7 +60,13 @@ const Cart = () => {
 
     const proceedToStripeCheckout = async () => {
         try {
-            const res = await axios.post("http://localhost:5000/create-checkout-session", cartItems);
+            const res = await axios.post(
+               
+                "https://ecommerce-react-backend-production.up.railway.app/create-checkout-session",
+                cartItems
+            );
+
+            // const res = await axios.post("http://localhost:5000/create-checkout-session", cartItems);
             window.location.href = res.data.url;
         } catch (err) {
             console.error(err);
